@@ -19,10 +19,10 @@ Shared library for infrawatch golang components.}
 
 Name:           golang-%{gohost}-%{goorg}-%{goproject}
 Version:        0.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Shared library for infrawatch golang components
 
-License:        # FIXME
+License:        ASL 2.0
 
 URL:            %{gourl}
 #Source0:        https://%{goipath}/archive/%{commit}/%{goproject}-%{shortcommit}.tar.gz
@@ -73,8 +73,13 @@ popd
 
 %files
 %{gopath}/src/%{goipath}
+%license LICENSE
+%doc README.md
 
 %changelog
+* Mon Jan 18 2021 Yatin Karel <ykarel@redhat.com> - 0.1-2.git8439bdc
+- Fix License
+
 * Tue Oct 13 2020 Martin Magr <mmagr@redhat.com> - 0.1-1.git8439bdc
 - Updated to latest upstream release
 - Fixed issue #1
