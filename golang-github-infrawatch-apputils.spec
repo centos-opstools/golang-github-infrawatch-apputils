@@ -7,7 +7,7 @@
 %global goorg           infrawatch
 %global goproject       apputils
 %global goipath         %{gohost}.%{gosuffix}/%{goorg}/%{goproject}
-%global commit          8439bdcd51add05fdd4c22b2248d441cbf79058e
+%global commit          28412c8e501ccfbdf0dfca590de223cb3a41bad4
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 %gometa
@@ -18,8 +18,8 @@ Shared library for infrawatch golang components.}
 %global godocs          README.md
 
 Name:           golang-%{gohost}-%{goorg}-%{goproject}
-Version:        0.1
-Release:        2%{?dist}
+Version:        0.2
+Release:        1%{?dist}
 Summary:        Shared library for infrawatch golang components
 
 License:        ASL 2.0
@@ -77,6 +77,9 @@ popd
 %doc README.md
 
 %changelog
+* Wed Feb 24 2021 Martin Magr <mmagr@redhat.com> - 0.2-1.git28412c8
+- Updated to latest upstream release
+
 * Mon Jan 18 2021 Yatin Karel <ykarel@redhat.com> - 0.1-2.git8439bdc
 - Fix License
 
