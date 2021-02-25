@@ -19,7 +19,7 @@ Shared library for infrawatch golang components.}
 
 Name:           golang-%{gohost}-%{goorg}-%{goproject}
 Version:        0.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Shared library for infrawatch golang components
 
 License:        ASL 2.0
@@ -36,8 +36,8 @@ BuildRequires:  golang(github.com/stretchr/testify/assert)
 
 Requires:  golang(github.com/go-ini/ini)
 Requires:  golang(github.com/streadway/amqp)
-Requires:  golang(qpid.apache.org/amqp)
-Requires:  golang(qpid.apache.org/electron)
+Requires:  golang(github.com/apache/qpid-proton/go/pkg/amqp)
+Requires:  golang(github.com/apache/qpid-proton/go/pkg/electron)
 
 Provides:       golang(%{goipath})
 
@@ -77,6 +77,9 @@ popd
 %doc README.md
 
 %changelog
+* Thu Feb 25 2021 Martin Magr <mmagr@redhat.com> - 0.2-2.git28412c8
+- Update of qpid-proton dependency
+
 * Wed Feb 24 2021 Martin Magr <mmagr@redhat.com> - 0.2-1.git28412c8
 - Updated to latest upstream release
 
