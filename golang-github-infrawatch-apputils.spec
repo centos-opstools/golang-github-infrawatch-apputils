@@ -7,7 +7,7 @@
 %global goorg           infrawatch
 %global goproject       apputils
 %global goipath         %{gohost}.%{gosuffix}/%{goorg}/%{goproject}
-%global commit          28412c8e501ccfbdf0dfca590de223cb3a41bad4
+%global commit          482adc424cd9144066a62f436a4a8d82bd6e0f2f
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 %gometa
@@ -18,7 +18,7 @@ Shared library for infrawatch golang components.}
 %global godocs          README.md
 
 Name:           golang-%{gohost}-%{goorg}-%{goproject}
-Version:        0.2
+Version:        0.3
 Release:        2%{?dist}
 Summary:        Shared library for infrawatch golang components
 
@@ -30,8 +30,8 @@ Source0:        https://%{goipath}/archive/v%{version}.tar.gz#/%{goproject}-v%{v
 
 BuildRequires:  golang(github.com/go-ini/ini)
 BuildRequires:  golang(github.com/streadway/amqp)
-BuildRequires:  golang(qpid.apache.org/amqp)
-BuildRequires:  golang(qpid.apache.org/electron)
+BuildRequires:  golang(github.com/apache/qpid-proton/go/pkg/amqp)
+BuildRequires:  golang(github.com/apache/qpid-proton/go/pkg/electron)
 BuildRequires:  golang(github.com/stretchr/testify/assert)
 
 Requires:  golang(github.com/go-ini/ini)
@@ -77,6 +77,11 @@ popd
 %doc README.md
 
 %changelog
+* Thu Apr 08 2021 Martin Magr <mmagr@redhat.com> - 0.3-1.git482adc4
+- Added task scheduler (scheduler module)
+- Fixed spawning SensuConnector when not all subscription channels are available
+- Added map operations (misc module)
+
 * Thu Feb 25 2021 Martin Magr <mmagr@redhat.com> - 0.2-2.git28412c8
 - Update of qpid-proton dependency
 
