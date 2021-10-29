@@ -7,7 +7,7 @@
 %global goorg           infrawatch
 %global goproject       apputils
 %global goipath         %{gohost}.%{gosuffix}/%{goorg}/%{goproject}
-%global commit          482adc424cd9144066a62f436a4a8d82bd6e0f2f
+%global commit          4f0bf956c38d743ac53bfc330e8cf58808423873
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 %gometa
@@ -18,8 +18,8 @@ Shared library for infrawatch golang components.}
 %global godocs          README.md
 
 Name:           golang-%{gohost}-%{goorg}-%{goproject}
-Version:        0.3
-Release:        2%{?dist}
+Version:        0.4
+Release:        1%{?dist}
 Summary:        Shared library for infrawatch golang components
 
 License:        ASL 2.0
@@ -77,6 +77,14 @@ popd
 %doc README.md
 
 %changelog
+* Fri Oct 29 2021 Martin Magr <mmagr@redhat.com> - 0.4-1.git4f0bf95
+- Add system.GetOpenedFiles
+- Add possibility to get process limits
+- Enhance error message returned from Loki
+- Explicitly init http client in Loki connector
+- Add ability to choose tenant to Loki connector
+- Split connector package into separate packages
+
 * Thu Apr 08 2021 Martin Magr <mmagr@redhat.com> - 0.3-1.git482adc4
 - Added task scheduler (scheduler module)
 - Fixed spawning SensuConnector when not all subscription channels are available
