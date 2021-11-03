@@ -7,7 +7,7 @@
 %global goorg           infrawatch
 %global goproject       apputils
 %global goipath         %{gohost}.%{gosuffix}/%{goorg}/%{goproject}
-%global commit          4f0bf956c38d743ac53bfc330e8cf58808423873
+%global commit          3573b2937d14f7a6d85fe7f8a7a22e3a2e19c283
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 %gometa
@@ -58,18 +58,19 @@ for file in ./* ; do
     fi
 done
 
-%if %{with check}
-export GOPATH=%{buildroot}/%{gopath}:%{gopath}
+%check
+#%if %{with check}
+#export GOPATH=%{buildroot}/%{gopath}:%{gopath}
 
-%if ! 0%{?gotest:1}
-%global gotest go test
-%endif
+#%if ! 0%{?gotest:1}
+#%global gotest go test
+#%endif
 
-pushd %{buildroot}/%{gopath}/src/%{gohost}.%{gosuffix}/%{goorg}/%{goproject}
+#pushd %{buildroot}/%{gopath}/src/%{gohost}.%{gosuffix}/%{goorg}/%{goproject}
 #Note(mmagr): unit test fail currently. Uncomment this in next build
 #%gotest ./...
-popd
-%endif
+#popd
+#%endif
 
 %files
 %{gopath}/src/%{goipath}
