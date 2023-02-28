@@ -7,7 +7,7 @@
 %global goorg           infrawatch
 %global goproject       apputils
 %global goipath         %{gohost}.%{gosuffix}/%{goorg}/%{goproject}
-%global commit          3573b2937d14f7a6d85fe7f8a7a22e3a2e19c283
+%global commit          4ffa97060af814fe6370e7ac2054a3ab72b1b375
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 %gometa
@@ -18,7 +18,7 @@ Shared library for infrawatch golang components.}
 %global godocs          README.md
 
 Name:           golang-%{gohost}-%{goorg}-%{goproject}
-Version:        0.4
+Version:        0.5
 Release:        1%{?dist}
 Summary:        Shared library for infrawatch golang components
 
@@ -78,6 +78,10 @@ done
 %doc README.md
 
 %changelog
+* Tue Feb 28 2023 Martin Magr <mmagr@redhat.com> - 0.5-1.git4ffa970
+- Add interval to duration converter
+- Improve AMQP-1.0 transport
+
 * Fri Oct 29 2021 Martin Magr <mmagr@redhat.com> - 0.4-1.git4f0bf95
 - Add system.GetOpenedFiles
 - Add possibility to get process limits
