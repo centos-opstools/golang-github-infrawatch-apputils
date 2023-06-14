@@ -30,8 +30,8 @@ Source0:        https://%{goipath}/archive/v%{version}.tar.gz#/%{goproject}-v%{v
 
 BuildRequires:  golang(github.com/go-ini/ini)
 BuildRequires:  golang(github.com/streadway/amqp)
-BuildRequires:  golang(github.com/apache/qpid-proton/go/pkg/amqp)
-BuildRequires:  golang(github.com/apache/qpid-proton/go/pkg/electron)
+BuildRequires:  golang(github.com/apache/qpid-proton/go/pkg/amqp) <= 0.34.0
+BuildRequires:  golang(github.com/apache/qpid-proton/go/pkg/electron)<= 0.34.0
 BuildRequires:  golang(github.com/stretchr/testify/assert)
 
 Requires:  golang(github.com/go-ini/ini)
@@ -81,6 +81,7 @@ done
 * Thu Jun 08 2023 Martin Magr <mmagr@redhat.com> - 0.6-1.git0c90918
 - Additional reconnect case (rhbz#2158781)
 - Don't attempt to close Sender on error (rhbz#2179924)
+- PIN on working qpid-proton (github.com/infrawatch/apputils/issues/27)
 
 * Tue Feb 28 2023 Martin Magr <mmagr@redhat.com> - 0.5-1.git4ffa970
 - Add interval to duration converter
