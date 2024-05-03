@@ -7,7 +7,7 @@
 %global goorg           infrawatch
 %global goproject       apputils
 %global goipath         %{gohost}.%{gosuffix}/%{goorg}/%{goproject}
-%global commit          0c90918c3e1e16cb1ba6bb1834890f8b4ed8ad7f
+%global commit          2f2621b85fa17b422e76994caf523b5112b3061c
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 %gometa
@@ -18,26 +18,22 @@ Shared library for infrawatch golang components.}
 %global godocs          README.md
 
 Name:           golang-%{gohost}-%{goorg}-%{goproject}
-Version:        0.6
+Version:        0.7
 Release:        1%{?dist}
 Summary:        Shared library for infrawatch golang components
-
 License:        ASL 2.0
 
 URL:            %{gourl}
-#Source0:        https://%{goipath}/archive/%{commit}/%{goproject}-%{shortcommit}.tar.gz
 Source0:        https://%{goipath}/archive/v%{version}.tar.gz#/%{goproject}-v%{version}.tar.gz
 
 BuildRequires:  golang(github.com/go-ini/ini)
 BuildRequires:  golang(github.com/streadway/amqp)
-BuildRequires:  golang(github.com/apache/qpid-proton/go/pkg/amqp)
-BuildRequires:  golang(github.com/apache/qpid-proton/go/pkg/electron)
 BuildRequires:  golang(github.com/stretchr/testify/assert)
+BuildRequires:  golang(github.com/Azure/go-amqp)
 
 Requires:  golang(github.com/go-ini/ini)
 Requires:  golang(github.com/streadway/amqp)
-Requires:  golang(github.com/apache/qpid-proton/go/pkg/amqp)
-Requires:  golang(github.com/apache/qpid-proton/go/pkg/electron)
+Requires:  golang(github.com/Azure/go-amqp)
 
 Provides:       golang(%{goipath})
 
@@ -67,7 +63,7 @@ done
 #%endif
 
 #pushd %{buildroot}/%{gopath}/src/%{gohost}.%{gosuffix}/%{goorg}/%{goproject}
-#Note(mmagr): unit test fail currently. Uncomment this in next build
+#Note(mmagr): unit test fail currently because of the need for 3rd party services
 #%gotest ./...
 #popd
 #%endif
@@ -78,6 +74,10 @@ done
 %doc README.md
 
 %changelog
+* Fri May 3 2024 Martin Magr <mmagr@redhat.com> - 0.7-1.git2f2621b
+- Refactor of AMQP-1.0 connector (issue #27)
+- Fix concurrent deadlock
+
 * Thu Jun 08 2023 Martin Magr <mmagr@redhat.com> - 0.6-1.git0c90918
 - Additional reconnect case (rhbz#2158781)
 - Don't attempt to close Sender on error (rhbz#2179924)
